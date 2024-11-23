@@ -1,0 +1,72 @@
+:root{
+--VeryDarkGrayishBlue: hsl(217,19%,35%);
+--DesaturatedDarkBlue: hsl(214,17%,51%);
+--GrayishBlue: hsl(212,23%,69%);
+--LightGrayishBlue: hsl(210,46%,95%);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100svh;
+
+    font-size: 13px;
+}
+
+.card{
+    display: flex; 
+    background-color: white; 
+    flex-direction: row;
+
+    max-width: 730px;
+    max-height: 280px;
+}
+
+.imgDrawer{
+    height: 100%;
+    width: 40%;
+}
+
+.imgDrawer img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+}
+
+.AuthorRow{
+    display: flex; 
+    margin-top: 20px; 
+    background-color: green;
+    justify-content: flex-start;
+}
+
+.AuthorRow img{
+    width: 50px;
+    border-radius: 50%;
+    padding-right: 8px;
+}
+
+.AuthorButton{
+    display: flex;
+    align-self: center;
+    margin-left: auto;
+}
+
+.NameAndDate{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
