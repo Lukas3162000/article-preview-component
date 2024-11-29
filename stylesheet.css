@@ -101,15 +101,6 @@ html,body{
     fill: #6E8098;
   }
 
-  /*Hover-States*/
-  .share-btn:hover{
-    background-color: var(--DesaturatedDarkBlue);
-  }
-
-  .share-btn:hover svg{
-    fill: #ffffff;
-  }
-
 
 .NameAndDate{
     display: flex;
