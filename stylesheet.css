@@ -175,6 +175,10 @@ html,body{
     color: var(--DesaturatedDarkBlue);
 }
 
+.MobileShare {
+   display: none;
+}
+
 
 /*Mobile-Ansicht*/
 
@@ -199,6 +203,52 @@ html,body{
         width: 100%;
         height: 100%;
         border-radius: 8px 8px 0 0 ;
-    
+    }
+    .AuthorRow{
+        display: none;
+    }
+
+    .MobileShare{
+        display: flex;
+        justify-content: space-around;
+        align-self: center;
+        background-color: var(--VeryDarkGrayishBlue);
+        width: 100%;
+        height: 100%;
+
+
+        border-radius: 0 0 8px 8px;
+    }
+
+    .MobileShare p{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+
+        opacity: 50%;
+        letter-spacing: 0.3rem;
+        font-size: 1.07rem;
+
+        color: #FFFFFF;
+    }
+    .MobileShare ul {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        margin-right: 0.5rem;
+    }
+
+    .MobileShare ul li{
+        display: flex;
+        justify-self: space-between;
+        padding: 0.5rem;
+
+    }
+    .MobileShare ul li a svg path{
+        fill: #FFFFFF;
+    }
+
+    .content{
+        margin-bottom: 0;
     }
 }
