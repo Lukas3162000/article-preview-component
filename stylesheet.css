@@ -92,7 +92,7 @@ html,body{
     position: absolute;
     background-color: var(--VeryDarkGrayishBlue);
     padding: 10px 20px;
-    color: white;
+    color: white; 
 
     align-items: center;
 
@@ -108,8 +108,20 @@ html,body{
     padding-right: 2.46rem;
 
     /*Hier später in JS bei nicht hover auf unsichtbar setzen*/
-    visibility:visible;
+    visibility: hidden;
 }
+
+.share-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px 8px 0 8px;
+    border-style: solid;
+    border-color: var(--VeryDarkGrayishBlue) transparent transparent transparent;
+}
+
 .share-bubble ul{
     display: flex;
     list-style: none;
