@@ -1,87 +1,77 @@
 const shareBtn = document.querySelector(".share-btn");
 const shareBubble = document.querySelector(".share-bubble");
-const shareContainer = document.querySelector(".share-container");
 const shareIcon = document.querySelector('.share-icon');
 
-const newShare = document.querySelector('.new-Share');
-const newIcon = document.querySelector('.new-Icon');
 const mobileShare = document.querySelector('.MobileShare');
 const mobileNormal = document.querySelector('.AuthorRow');
 
-let isShown = false;
+let isShown = false; // Zustand für Sichtbarkeit von Bubble/MobileShare
 
+// Funktion zur Überprüfung, ob wir uns in der mobilen Ansicht befinden
+function isMobileView() {
+    return window.matchMedia('(max-width: 600px)').matches;
+}
 
-//Desktop Sharebubble settings
-function showBubble(){
+// Desktop-Share-Bubble anzeigen
+function showBubble() {
     shareBubble.style.visibility = "visible";
     shareBubble.style.opacity = "1";
-};
+}
 
-function hideBubble(){
+// Desktop-Share-Bubble ausblenden
+function hideBubble() {
     shareBubble.style.visibility = "hidden";
     shareBubble.style.opacity = "0";
-};
+}
 
-
-
-//Mobile Share  settings
-function showMobileShare(){
+// Mobile-Share anzeigen
+function showMobileShare() {
     mobileShare.style.display = "flex";
     mobileNormal.style.display = "none";
-};
+}
 
-function hideMobileShare(){
+// Mobile-Share ausblenden
+function hideMobileShare() {
     mobileNormal.style.display = "flex";
     mobileShare.style.display = "none";
-};
+}
 
-
-
-//Desktop Hoverstate 
-shareBtn.addEventListener('mouseover', () => {
-    shareBtn.style.backgroundColor = 'hsl(214, 17%, 51%)';
-    shareIcon.style.fill = '#ffffff';
-});
-
-shareBtn.addEventListener('mouseout', () =>{
-    shareBtn.style.backgroundColor = 'hsl(210,46%,95%)';
-    shareIcon.style.fill = '#6E8098';
-});
-
-
-
-//Share-Bubble-Logic on Desktop
+// Share-Button-Klick-Logik
 shareBtn.addEventListener('click', () => {
-    if(!isShown){
-    showBubble();
-    isShown = true;
-    } else{
-    hideBubble();
-    isShown = false;
+    if (isMobileView()) {
+        // Mobile-Logik
+        if (!isShown) {
+            showMobileShare(); // Mobile Share anzeigen
+        } else {
+            hideMobileShare(); // Zurück zur AuthorRow
+        }
+    } else {
+        // Desktop-Logik
+        if (!isShown) {
+            showBubble(); // Desktop Bubble anzeigen
+        } else {
+            hideBubble(); // Desktop Bubble ausblenden
+        }
     }
+    isShown = !isShown; // Zustand umschalten
 });
 
-
-
-//Mobile-Hoverstate
-newShare.addEventListener('mouseover', () => {
-    newShare.style.backgroundColor = 'hsl(210,46%,95%)';
-    newIcon.style.fill = 'hsl(214, 17%, 51%)';
-});
-
-newShare.addEventListener('mouseout', () =>{
-    newShare.style.backgroundColor = 'hsl(214, 17%, 51%)';
-    newIcon.style.fill = '#ffffff';
-});
-
-
-//Share-Div-Logic on mobile
-newShare.addEventListener('click', () => {
-    if(isShown){
-    showMobileShare();
-    isShown = true;
-    } else{
-    hideMobileShare();
-    isShown = false;
+// Auf Bildschirmgröße reagieren und Zustand zurücksetzen
+function handleResize() {
+    if (!isMobileView()) {
+        // Wechsel zur Desktop-Ansicht
+        hideMobileShare(); // Mobile-Ansicht ausblenden
+        hideBubble(); // Bubble ebenfalls ausblenden
+    } else {
+        // Wechsel zur mobilen Ansicht
+        hideBubble(); // Desktop-Bubble ausblenden
+        hideMobileShare(); // Mobile-Ansicht ebenfalls ausblenden
     }
-});
+    isShown = false; // Zustand zurücksetzen
+}
+
+// EventListener für die Bildschirmgröße
+window.addEventListener('resize', handleResize);
+
+// Initiale Überprüfung bei Laden der Seite
+handleResize();
