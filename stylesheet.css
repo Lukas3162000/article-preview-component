@@ -244,11 +244,22 @@ html,body{
         padding: 0.5rem;
 
     }
-    .MobileShare ul li a svg path{
+
+    .MobileShare ul li svg path{
         fill: #FFFFFF;
     }
 
     .content{
         margin-bottom: 0;
     }
+
+
+    .share-btn{
+        background-color: hsl(214, 17%, 51%);
+    }
+
+    .share-btn svg {
+        fill: #ffffff;
+    }
+
 }
