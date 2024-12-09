@@ -2,6 +2,8 @@ const shareBtn = document.querySelector(".share-btn");
 const shareBubble = document.querySelector(".share-bubble");
 const shareIcon = document.querySelector('.share-icon');
 
+const newShareBtn = document.querySelector(".new-Share");
+
 const mobileShare = document.querySelector('.MobileShare');
 const mobileNormal = document.querySelector('.AuthorRow');
 
@@ -42,19 +44,33 @@ shareBtn.addEventListener('click', () => {
         // Mobile-Logik
         if (!isShown) {
             showMobileShare(); // Mobile Share anzeigen
+           
         } else {
             hideMobileShare(); // Zurück zur AuthorRow
+            
         }
     } else {
         // Desktop-Logik
         if (!isShown) {
             showBubble(); // Desktop Bubble anzeigen
+            
         } else {
             hideBubble(); // Desktop Bubble ausblenden
+            
         }
     }
-    isShown = !isShown; // Zustand umschalten
+    isShown = !isShown;
 });
+
+
+//Mobile-newSharebtn return logik
+newShareBtn.addEventListener('click', () => {
+    if(isShown){
+        hideMobileShare();
+    }
+    isShown = !isShown;
+});
+
 
 // Auf Bildschirmgröße reagieren und Zustand zurücksetzen
 function handleResize() {
